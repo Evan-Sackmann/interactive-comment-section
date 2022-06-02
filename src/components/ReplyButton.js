@@ -1,5 +1,8 @@
 import React from "react";
 
-export default function ReplyButton() {
-  return <button>Reply</button>;
+export default function ReplyButton(props) {
+  function displayId() {
+    props.addComment((prev) => !prev);
+  }
+  return <button onClick={displayId}>Reply</button>;
 }

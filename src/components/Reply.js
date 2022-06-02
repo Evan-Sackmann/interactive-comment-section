@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import CommentContent from "./CommentContent";
 import Score from "./Score";
 import UserInfo from "./UserInfo";
 import DeleteReply from "./DeleteReply";
 import ReplyButton from "./ReplyButton";
+import AddComment from "./AddComment";
 
 export default function Reply(props) {
+  const [replyStatus, setReplyStatus] = useState(false);
   function displayReplies() {
     return props.reply.map((reply) => {
       return (
@@ -15,6 +17,7 @@ export default function Reply(props) {
           <ReplyButton
             handleComments={props.handleComments}
             allComments={props.allComments}
+            addComment={setReplyStatus}
           />
           <CommentContent content={reply.content} />
           <DeleteReply
@@ -22,6 +25,7 @@ export default function Reply(props) {
             handleComments={props.handleComments}
             allComments={props.allComments}
           />
+          {replyStatus && <AddComment />}
         </div>
       );
     });

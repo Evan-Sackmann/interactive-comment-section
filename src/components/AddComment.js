@@ -5,7 +5,7 @@ export default function AddComment(props) {
   const [input, setInput] = useState("");
 
   function postComment() {
-    const newComment = {
+    let newComment = {
       id: props.commentKey,
       content: input,
       createdAt: "Just Now",
@@ -19,7 +19,13 @@ export default function AddComment(props) {
       replies: [],
     };
     props.setCommentKey((key) => key + 1);
-    props.setCommentsArray([...props.commentsArray, newComment]);
+    let newReply = props.allComments.map((comment) => {
+      return comment.id === props.id
+        ? { ...comment, replies: [...comment.replies, newComment] }
+        : comment;
+    });
+    props.handleComments(newReply);
+    // console.log(newReply);
   }
   return (
     <div>

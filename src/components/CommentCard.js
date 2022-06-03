@@ -28,7 +28,16 @@ export default function CommentCard(props) {
           allComments={props.allComments}
         />
       </div>
-      {replyStatus && <AddComment />}
+      {replyStatus && (
+        <AddComment
+          userDetails={props.userDetails}
+          commentKey={props.commentKey}
+          setCommentKey={props.setCommentKey}
+          id={id}
+          handleComments={props.handleComments}
+          allComments={props.allComments}
+        />
+      )}
       <Reply
         reply={replies}
         handleComments={props.handleComments}

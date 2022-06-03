@@ -17,7 +17,10 @@ function App() {
         <CommentCard
           key={comment.id}
           handleComments={setCommentsArray}
+          commentKey={commentKey}
+          setCommentKey={setCommentKey}
           allComments={commentsArray}
+          userDetails={userDetails}
         >
           {comment}
         </CommentCard>
@@ -29,7 +32,6 @@ function App() {
     <div className="App">
       {createComments()}
       <AddComment
-        userDetails={userDetails}
         commentKey={commentKey}
         setCommentKey={setCommentKey}
         commentsArray={commentsArray}

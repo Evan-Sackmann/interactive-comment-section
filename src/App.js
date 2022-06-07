@@ -16,11 +16,11 @@ function App() {
       return (
         <CommentCard
           key={comment.id}
-          handleComments={setCommentsArray}
+          userDetails={userDetails}
           commentKey={commentKey}
           setCommentKey={setCommentKey}
           allComments={commentsArray}
-          userDetails={userDetails}
+          handleComments={setCommentsArray}
         >
           {comment}
         </CommentCard>
@@ -32,10 +32,12 @@ function App() {
     <div className="App">
       {createComments()}
       <AddComment
+        userDetails={userDetails}
         commentKey={commentKey}
         setCommentKey={setCommentKey}
-        commentsArray={commentsArray}
-        setCommentsArray={setCommentsArray}
+        allComments={commentsArray}
+        handleComments={setCommentsArray}
+        newComment={true}
       />
     </div>
   );

@@ -18,14 +18,27 @@ export default function AddComment(props) {
       },
       replies: [],
     };
-    props.setCommentKey((key) => key + 1);
-    let newReply = props.allComments.map((comment) => {
-      return comment.id === props.id
-        ? { ...comment, replies: [...comment.replies, newComment] }
-        : comment;
-    });
-    props.handleComments(newReply);
-    // console.log(newReply);
+    if (props.edit) {
+      let editComment = props.allComments.map((comment) => {
+        return comment.id === props.id
+          ? { ...comment, content: input }
+          : comment;
+      });
+      props.handleComments(editComment);
+      props.hideReply(false);
+    } else if (props.newComment) {
+      props.handleComments((prev) => [...prev, newComment]);
+      props.setCommentKey((key) => key + 1);
+    } else {
+      let newReply = props.allComments.map((comment) => {
+        return comment.id === props.id
+          ? { ...comment, replies: [...comment.replies, newComment] }
+          : comment;
+      });
+      props.handleComments(newReply);
+      props.setCommentKey((key) => key + 1);
+      props.hideReply(false);
+    }
   }
   return (
     <div>

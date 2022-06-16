@@ -7,6 +7,23 @@ body {
   color: white;
 }
 
-.App {
-  margin: 1em;
+.comment-card-reply {
+  margin-left: 2em;
+}
+
+.comment-reply-button {
+  color: hsl(212, 24%, 26%);
+}
+
+.comment-score {
+  background-color: hsl(228, 33%, 97%);
+  width: 3em;
+  /* gap: 1em; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  cursor: pointer;
 }

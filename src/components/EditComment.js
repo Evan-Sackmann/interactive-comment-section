@@ -1,4 +1,5 @@
 import React from "react";
+import editIcon from "../images/icon-edit.svg";
 
 export default function EditComment(props) {
   function editComment() {
@@ -6,11 +7,10 @@ export default function EditComment(props) {
   }
   return (
     <div>
-      {/* 
-            create input area in content section on button click
-            update comment in state with new content
-        */}
-      <button onClick={editComment}>Edit</button>
+      <button onClick={editComment}>
+        <img src={editIcon} alt="" />
+        Edit
+      </button>
     </div>
   );
 }

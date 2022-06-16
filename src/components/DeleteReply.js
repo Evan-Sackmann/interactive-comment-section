@@ -1,18 +1,27 @@
 import React from "react";
+import deleteIcon from "../images/icon-delete.svg";
 
 export default function Delete(props) {
-  function getCommentId() {
-    console.log(props.id);
-    let newVal = [];
-    props.allComments.forEach((comment) =>
-      // comment.replies.filter((reply) => reply.id !== props.id)
-      {
-        if (comment.replies.length > 0) {
-          newVal.push(comment.replies);
-        }
-      }
-    );
-    console.log(typeof newVal);
-  }
-  return <button onClick={getCommentId}>Delete</button>;
+	function getCommentId() {
+		let sorted = props.allComments.map((comment) => {
+			if (comment.id === props.parentId) {
+				return {
+					...comment,
+					replies: comment.replies.filter(
+						(reply) => reply.id !== props.id
+					),
+				};
+			} else {
+				return comment;
+			}
+		});
+		console.log(sorted);
+		props.handleComments(sorted);
+	}
+	return (
+		<button onClick={getCommentId}>
+			<img src={deleteIcon} alt="" />
+			Delete
+		</button>
+	);
 }

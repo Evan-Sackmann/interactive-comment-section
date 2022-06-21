@@ -15,30 +15,37 @@ export default function CommentCard(props) {
 	return (
 		<div className="comment-card">
 			<div className="comment-card-main">
-				<Score score={score} />
-				<UserInfo user={user} date={createdAt} />
-				<ReplyButton
-					id={id}
-					handleComments={props.handleComments}
-					allComments={props.allComments}
-					addComment={setReplyStatus}
-				/>
-				<CommentContent content={content} />
-				{user.username === props.userDetails.username && (
-					<div>
-						<DeleteButton
-							id={id}
-							handleComments={props.handleComments}
-							allComments={props.allComments}
-						/>
-						<EditComment
-							id={id}
-							handleComments={props.handleComments}
-							allComments={props.allComments}
-							addComment={setEditStatus}
-						/>
-					</div>
-				)}
+				<div className="comment-card-comment">
+					<Score
+						score={score}
+						id={id}
+						handleComments={props.handleComments}
+						allComments={props.allComments}
+					/>
+					<UserInfo user={user} date={createdAt} />
+					<ReplyButton
+						id={id}
+						handleComments={props.handleComments}
+						allComments={props.allComments}
+						addComment={setReplyStatus}
+					/>
+					<CommentContent content={content} />
+					{user.username === props.userDetails.username && (
+						<div>
+							<DeleteButton
+								id={id}
+								handleComments={props.handleComments}
+								allComments={props.allComments}
+							/>
+							<EditComment
+								id={id}
+								handleComments={props.handleComments}
+								allComments={props.allComments}
+								addComment={setEditStatus}
+							/>
+						</div>
+					)}
+				</div>
 				<Reply
 					userDetails={props.userDetails}
 					reply={replies}

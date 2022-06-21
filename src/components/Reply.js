@@ -13,7 +13,12 @@ export default function Reply(props) {
 		return props.reply.map((reply) => {
 			return (
 				<div className="comment-card-reply" key={reply.id}>
-					<Score score={reply.score} />
+					<Score
+						score={reply.score}
+						id={reply.id}
+						handleComments={props.handleComments}
+						allComments={props.allComments}
+					/>
 					<UserInfo user={reply.user} date={reply.createdAt} />
 					{props.userDetails.username !== reply.user.username && (
 						<ReplyButton
@@ -24,7 +29,7 @@ export default function Reply(props) {
 					)}
 					<CommentContent content={reply.content} />
 					{props.userDetails.username === reply.user.username && (
-						<div>
+						<div className="comment-user-buttons">
 							<DeleteReply
 								parentId={props.parentId}
 								id={reply.id}

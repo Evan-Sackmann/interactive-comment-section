@@ -19,7 +19,7 @@ export default function Delete(props) {
 		props.handleComments(sorted);
 	}
 	return (
-		<button onClick={getCommentId}>
+		<button className="comment-button" onClick={getCommentId}>
 			<img src={deleteIcon} alt="" />
 			Delete
 		</button>
